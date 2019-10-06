@@ -1,0 +1,125 @@
+{% extends 'saller/base.html' %}
+{% block  content%}
+<!DOCTYPE html>
+
+<html lang="en-us" >
+<head>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css">
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src="/static/ckeditor/ckeditor-init.js" data-ckeditor-basepath="/static/ckeditor/ckeditor/" id="ckeditor-init-script"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/ckeditor/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+
+
+<meta name="robots" content="NONE,NOARCHIVE">
+</head>
+
+
+<body class=" app-app01 model-article change-form"
+  data-admin-utc-offset="0">
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+  <fieldset class="module aligned ">
+
+
+
+        <div class="form-row field-title">
+
+
+                <div>
+
+
+                        <label class="required" for="id_title">文章标题:</label>
+
+                            <input type="text" name="title" required id="id_title" class="vTextField" maxlength="32">
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-content">
+
+
+                <div>
+
+
+                        <label class="required" for="id_content">文章内容:</label>
+
+                            <div class="django-ckeditor-widget" data-field-id="id_content" style="display: inline-block;">
+    <textarea cols="40" id="id_content" name="content" rows="10" required data-processed="0" data-config="{&quot;toolbar&quot;: &quot;Full&quot;, &quot;filebrowserWindowWidth&quot;: 940, &quot;height&quot;: 291, &quot;skin&quot;: &quot;moono-lisa&quot;, &quot;width&quot;: 835, &quot;toolbar_Full&quot;: [[&quot;Styles&quot;, &quot;Format&quot;, &quot;Bold&quot;, &quot;Italic&quot;, &quot;Underline&quot;, &quot;Strike&quot;, &quot;SpellChecker&quot;, &quot;Undo&quot;, &quot;Redo&quot;], [&quot;Link&quot;, &quot;Unlink&quot;, &quot;Anchor&quot;], [&quot;Image&quot;, &quot;Flash&quot;, &quot;Table&quot;, &quot;HorizontalRule&quot;], [&quot;TextColor&quot;, &quot;BGColor&quot;], [&quot;Smiley&quot;, &quot;SpecialChar&quot;], [&quot;Source&quot;]], &quot;filebrowserWindowHeight&quot;: 725, &quot;language&quot;: &quot;en-us&quot;, &quot;toolbar_Basic&quot;: [[&quot;Source&quot;, &quot;-&quot;, &quot;Bold&quot;, &quot;Italic&quot;]]}" data-external-plugin-resources="[]" data-id="id_content" data-type="ckeditortype"></textarea>
+</div>
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-description">
+
+
+                <div>
+
+
+                        <label class="required" for="id_description">描述:</label>
+
+                            <div class="django-ckeditor-widget" data-field-id="id_description" style="display: inline-block;">
+    <textarea cols="40" id="id_description" name="description" rows="10" required data-processed="0" data-config="{&quot;toolbar&quot;: &quot;Full&quot;, &quot;filebrowserWindowWidth&quot;: 940, &quot;height&quot;: 291, &quot;skin&quot;: &quot;moono-lisa&quot;, &quot;width&quot;: 835, &quot;toolbar_Full&quot;: [[&quot;Styles&quot;, &quot;Format&quot;, &quot;Bold&quot;, &quot;Italic&quot;, &quot;Underline&quot;, &quot;Strike&quot;, &quot;SpellChecker&quot;, &quot;Undo&quot;, &quot;Redo&quot;], [&quot;Link&quot;, &quot;Unlink&quot;, &quot;Anchor&quot;], [&quot;Image&quot;, &quot;Flash&quot;, &quot;Table&quot;, &quot;HorizontalRule&quot;], [&quot;TextColor&quot;, &quot;BGColor&quot;], [&quot;Smiley&quot;, &quot;SpecialChar&quot;], [&quot;Source&quot;]], &quot;filebrowserWindowHeight&quot;: 725, &quot;language&quot;: &quot;en-us&quot;, &quot;toolbar_Basic&quot;: [[&quot;Source&quot;, &quot;-&quot;, &quot;Bold&quot;, &quot;Italic&quot;]]}" data-external-plugin-resources="[]" data-id="id_description" data-type="ckeditortype"></textarea>
+</div>
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-picture">
+                <div>
+                    <label class="required">图片:</label>
+                    <input type="file" name="picture">
+                </div>
+        </div>
+
+
+        <div class="form-row field-type">
+
+
+                <div>
+
+
+                        <label class="required" for="id_type">类型:</label>
+                            <div class="related-widget-wrapper">
+    <select name="type" required id="id_type" multiple>
+  <option value="1">散文</option>
+
+  <option value="2">诗歌</option>
+
+  <option value="3">童话</option>
+
+</select>
+
+</div>
+                </div>
+        </div>
+</fieldset>
+<div class="submit-row">
+<input type="submit" value="发布" class="default" name="_save">
+</div>
+</form>
+</body>
+</html>
+
+{% endblock %}

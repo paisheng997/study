@@ -1,0 +1,38 @@
+{% extends 'saller/base.html' %}
+{% block style %}
+    <link href="/static/css/base.css" rel="stylesheet">
+<link href="/static/css/main.css" rel="stylesheet">
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+<script type="text/javascript" src="js/jquery.js"></script>
+{% endblock %}
+{% block  content%}
+<div class="dtxw box">
+{% for article in page_obj %}
+        <li>
+          <div class="dttext f_l">
+            <ul>
+              <h2><a href="/myarticle/{{ article.id }}">{{ article.title }}</a></h2>
+              <p>{{ article.description | safe}}</p>
+              <span>{{ article.date }}</span>
+            </ul>
+          </div>
+          <div class="xwpic f_r"><a href="/"><img src="/static/{{ article.picture }}"></a></div>
+        </li>
+{% endfor %}
+      </div>
+    <div class="pagelist">
+        <a href="/myarticles/1">首页</a>
+        {% if page_obj.has_previous %}
+            <a href="/myarticles/{{ page_obj.previous_page_number }}">上一页</a>
+        {% endif %}
+            {% for one in page_range %}
+                <a href="/myarticles/{{ one }}">{{ one }}</a>
+            {% endfor %}
+        {% if page_obj.has_next %}
+           <a href="/myarticles/{{ page_obj.next_page_number }}">下一页</a>
+        {% endif %}
+         <a href="/myarticles/{{ max_page }}">尾页</a>
+        </div>
+{% endblock %}
