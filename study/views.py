@@ -297,6 +297,7 @@ def personal(request):
         article.description = description
         article.picture = picture
         article.content = content
+        # article.type.add(type.id)
         article.author = Author.objects.filter(email=request.COOKIES.get('email')).first()
         article.save()
         article.type.add(type)
